@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ title }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -29,14 +29,73 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <button @click="changeTitle">点击改变标题</button>
+    <button @click="changeCity">点击改变地址</button>
+    <div>{{getCity}}</div>
+    <button @click="toggleComponent">切换组件</button>
+    <keep-alive>
+      <component :is="subComponent" ></component>
+    </keep-alive>
+    <div class="big-box-wrap">
+      <div class="big-box">1</div>
+      <div class="big-box">2</div>
+      <div class="big-box">3</div>
+      <div class="big-box">4</div>
+      <div class="big-box">5</div>
+      <div class="big-box">6</div>
+      <div class="big-box">7</div>
+      <div class="big-box">8</div>
+      <div class="big-box">9</div>
+      <div class="big-box">10</div>
+      <div class="big-box">11</div>
+      <div class="big-box">12</div>
+      <div class="big-box">13</div>
+      <div class="big-box">14</div>
+      <div class="big-box">15</div>
+      <div class="big-box">16</div>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapMutations, mapGetters } from 'vuex'
+import Hello from './hello.vue'
+import World from './world.vue'
+
 export default {
   name: 'HelloWorld',
+  components: {
+    Hello,
+    World
+  },
   props: {
     msg: String
+  },
+  data () {
+    return {
+      title: this.msg,
+      subComponent: 'Hello'
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'getCity'
+    ])
+  },
+  methods: {
+    changeTitle () {
+      this.title += '$'
+    },
+    toggleComponent () {
+      this.subComponent = this.subComponent === 'Hello' ? 'World' : 'Hello'
+    },
+    changeCity () {
+      const city = '上海'
+      this.setCity(city)
+    },
+    ...mapMutations([
+      'setCity'
+    ])
   }
 }
 </script>
@@ -56,5 +115,15 @@ li {
 }
 a {
   color: #42b983;
+}
+.big-box-wrap {
+  overflow: hidden;
+}
+.big-box {
+  width: 100%;
+  height: 500px;
+  background: pink;
+  margin: 5px auto;
+  float: left;
 }
 </style>
