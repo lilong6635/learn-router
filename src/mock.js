@@ -1,5 +1,9 @@
 var Mock = require('mockjs')
 
+Mock.setup({
+  timeout: '3000'
+})
+
 // 定义数据类型
 var data = Mock.mock('/api', {
   // 20条数据
