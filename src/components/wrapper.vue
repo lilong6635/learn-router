@@ -19,6 +19,12 @@ export default {
     toggleLoading() {
       this.loading = !this.loading
     }
+  },
+  created() {
+    console.log('wrapper.vue created')
+  },
+  mounted() {
+    console.log('wrapper.vue mounted')
   }
 }
 </script>

@@ -19,6 +19,12 @@ export default {
       const msg = this.msg
       this.msg = msg === 'hello' ? 'world' : 'hello'
     }
+  },
+  created() {
+    console.log('hello.vue created')
+  },
+  mounted() {
+    console.log('hello.vue mounted')
   }
 }
 </script>

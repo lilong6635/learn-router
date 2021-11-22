@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'Nihao',
+  name: 'World',
   data () {
     return {
       msg: '你好'
@@ -19,6 +19,12 @@ export default {
       const msg = this.msg
       this.msg = msg === '你好' ? '世界' : '你好'
     }
+  },
+  created() {
+    console.log('world.vue created')
+  },
+  mounted() {
+    console.log('world.vue mounted')
   }
 }
 </script>

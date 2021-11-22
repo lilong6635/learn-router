@@ -5,6 +5,7 @@ import store from './store'
 
 import '@/assets/scss/index.scss'
 import registerDirective from './register-directive'
+import './mock'
 
 Vue.config.productionTip = false
 registerDirective(Vue)

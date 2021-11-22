@@ -12,6 +12,7 @@
 // import HelloWorld from '@/components/HelloWorld.vue'
 import { mapGetters } from 'vuex'
 import Wrapper from '@/components/wrapper'
+import { get } from '@/service/api'
 
 export default {
   name: 'Home',
@@ -28,6 +29,15 @@ export default {
   },
   deactivated () {
     console.log('About deactived')
+  },
+  created() {
+    console.log('about.vue created')
+    get('/api').then(data => {
+      console.log(data)
+    })
+  },
+  mounted() {
+    console.log('about.vue mounted')
   }
 }
 </script>
